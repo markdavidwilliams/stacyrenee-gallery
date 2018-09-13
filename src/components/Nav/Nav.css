@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700');
+
+@keyframes dropTopC {
+  from {
+    height: 0;
+  }
+  to {
+    height: 37px;
+  }
+}
+
+@keyframes dropTopW {
+  from {
+    height: 0;
+  }
+  to {
+    height: 27px;
+  }
+}
+
+.container {
+  position: fixed;
+  width: 100vw;
+  padding-top: 5px;
+  border-bottom: 1px solid #fc8f0050;
+  opacity: 0.8;
+  height: 37px;
+  overflow: hidden;
+  transition: opacity 1s, height 1s, border-bottom 1.5s, background-color 1.5s;
+  animation: dropTopC 1000ms;
+  z-index: 100;
+}
+
+.container:hover {
+  border-bottom: 2px solid #fc8f00;
+  opacity: 1;
+  height: 40px;
+  background-color: #fc8f0020;
+  transition: opacity 0.5s, height 0.5s, border-bottom 1.5s, background-color 1.5s;
+}
+
+.nav-wrapper {
+  margin: 0 auto 5px;
+  font-size: 1.2rem;
+  font-family: 'Open Sans Condensed', sans-serif;
+  overflow: hidden;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  animation: dropTopW 1085ms;
+}
+
+.title {
+  color: #000000;
+  letter-spacing: 6px;
+}
+
+.right-nav img {
+  display: none;
+}
+
+.nav-wrapper a {
+  text-decoration: none;
+}
+
+.nav-wrapper .links {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.active {
+  color: #f96300;
+  transition: color 0.5s;
+}
+
+.nav-wrapper .links .inactive {
+  color: #B5B5B5;
+  transition: color 0.5s;
+}
+
+.nav-wrapper .links .inactive:hover {
+  color: gray;
+  transition: color 0.5s;
+}
+
+.current {
+  display: none;
+}
+
+@media (max-width: 480px) {
+
+  .off-clicker.on {
+    height: 100vh;
+    z-index: -100;
+  }
+
+  .container {
+    height: 37px;
+  }
+
+  .container:hover {
+    border-bottom: 1px solid #fc8f0050;
+    opacity: 0.8;
+    height: 37px;
+    background-color: #FFFFFF00;
+  }
+
+  .container.expanded {
+    border-bottom: 2px solid #fc8f00;
+    opacity: 1;
+    height: 177px;
+    background-color: #fc8f0020;
+    transition: opacity 0.5s, height 0.5s, border-bottom 1.5s, background-color 1.5s;
+  }
+
+  .nav-wrapper {
+    margin: 0;
+    padding: 0 1.5%;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    animation: none;
+  }
+
+  .nav-wrapper .mobile-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    animation: dropTopW 1350ms;
+  }
+
+  .nav-wrapper .right-nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 56%;
+  }
+
+  .current {
+    display: inline-block;
+    margin-right: 5%;
+  }
+
+  .current.on {
+    transition: opacity 0.5s;
+  }
+
+  .current.off {
+    opacity: 0;
+    transition: opacity 0.5s
+  }
+
+  .nav-wrapper .right-nav.nx img {
+    display: inline;
+    height: 18px;
+    opacity: 0.6;
+    content: url('../../img/hamburger-menu.png')
+  }
+
+  .nav-wrapper .right-nav.ex img {
+    display: inline;
+    height: 18px;
+    opacity: 0.6;
+    content: url('../../img/x.png')
+  }
+
+  .nav-wrapper .links {
+    width: 100%;
+    padding-right: 1%;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 5px;
+    margin-bottom: 3px;
+  }
+}

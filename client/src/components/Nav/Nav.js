@@ -1,5 +1,5 @@
 // dependencies
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 // styles
@@ -83,20 +83,26 @@ class Nav extends Component {
     const expanded = this.state.expanded;
     if (!expanded) {
       switch (elm) {
-        case 'nav':
-          this.toggleExpanded(event);
+        case 'nav': // right section of nav bar
+          this.toggleExpanded(event)
           break;
         default:
           return;
       }
     } else {
       switch (elm) {
-        case 'menu':
-          this.toggleExpanded(event);
+        case 'menu': // actual menu button
+          this.toggleExpanded(event)
           break;
         case 'off-clicker':
           this.toggleExpanded(event)
-          break;  
+          break;
+        case 'links':
+          this.toggleExpanded(event) 
+          break;
+        case 'title':
+          this.toggleExpanded(event)
+          break;
         default:
           return;
       }
@@ -105,19 +111,22 @@ class Nav extends Component {
 
   render() {
     return (
-      <div className={this.decideClass('off-clicker')} onClick={event => this.toggleFire(event, 'off-clicker')}>
+      <Fragment>
+        <div className={this.decideClass('off-clicker')} onClick={event => this.toggleFire(event, 'off-clicker')} />
         <div className={this.decideClass('container')}>
           <div className='nav-wrapper'>
             <div className='mobile-wrapper'>
-              <Link to='/' className='title'>
-                <p>stacy renee</p>
-              </Link>
+              <div className='title' onClick={event => this.toggleFire(event, 'title')}>
+                <Link to='/'>
+                  <p>stacy renee</p>
+                </Link>
+              </div>
               <div className={this.decideClass('right-nav')} onClick={event => this.toggleFire(event, 'nav')}>
                 <p className={this.decideClass('current')}>{this.state.active}</p>
                 <img onClick={event => this.toggleFire(event, 'menu')} alt='menu'/>
               </div>
             </div>
-            <div className='links'>
+            <div className='links' onClick={event => this.toggleFire(event, 'links')}>
               <Link to='/gallery' className={this.isActive('gallery')}>gallery</Link>
               <Link to='/videos' className={this.isActive('videos')}>videos</Link>
               <Link to='/about' className={this.isActive('about')}>about</Link>
@@ -126,7 +135,7 @@ class Nav extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Fragment>
     )
   }
 }

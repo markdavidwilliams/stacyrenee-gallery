@@ -52,7 +52,7 @@
 }
 
 .title {
-  color: #000000;
+  color: #000;
   letter-spacing: 6px;
 }
 
@@ -89,15 +89,24 @@
   display: none;
 }
 
+.off-clicker {
+  display: none;
+}
+
 @media (max-width: 480px) {
 
   .off-clicker.on {
+    display: initial;
+    position: fixed;
     height: 100vh;
-    z-index: -100;
+    width: 100vw;
   }
 
   .container {
     height: 37px;
+    backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .container:hover {

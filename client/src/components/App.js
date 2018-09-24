@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Nav from './Nav/Nav';
 import Gallery from './Gallery/Gallery';
 import ContentManager from './ContentManager/ContentManager'
+import CmsNav from './ContentManager/CmsNav/CmsNav'
 
 class App extends Component {
   state = {
@@ -28,7 +29,8 @@ class App extends Component {
     } else {
       const routes = [
         <Route key={this.routeKey()} path = '/' component = { Nav } />,
-        <Route key={this.routeKey()} path = '/' component = { Gallery } />,
+        <Route key={this.routeKey()} path='/' component={ CmsNav } />,
+        <Route key={this.routeKey()} path = '/gallery' component = { Gallery } />,
         <Route key={this.routeKey()} path = '/renovate/cms' component = { ContentManager } />
       ]
       this.setState({ routes })

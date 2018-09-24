@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import Login from './Login/Login'
 
@@ -14,15 +14,15 @@ class ContentManager extends Component {
     if (!token) {
       this.setState({ component: <Login /> })
     } else {
-      this.setState({ component: <p>Success</p> })
+      return
     }
   }
 
   render() {
     return (
-      <div className="cms-container">
+      <Fragment>
        {this.state.component}
-      </div>
+      </Fragment>
     )
   }
 }

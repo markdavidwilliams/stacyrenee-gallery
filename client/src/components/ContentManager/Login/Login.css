@@ -1,11 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Audiowide');
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono');
 
 .login-wrapper {
+  position: absolute;
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: lightgray;
+  z-index: 100;
+  font-family: 'Share Tech Mono', monospace;
 }
 
 .login-modal {
@@ -14,7 +19,8 @@
   height: 350px;
   border: 1px solid red;
   letter-spacing: 10px;
-  font-family: 'Audiowide', cursive;
+  background: white;
+  z-index: 100;
 }
 
 .login-modal h1 {
@@ -35,11 +41,23 @@
   width: 45%;
 }
 
+.login-modal form input {
+  font-family: 'Share Tech Mono', monospace;
+}
+
 .login-modal form button {
   padding-top: 35px;
   border: none;
   background: none;
-  font-family: 'Audiowide', cursive;
+  font-family: 'Share Tech Mono', monospace;
   font-size: 1.3rem;
   letter-spacing: 3px;
+  cursor: pointer;
+}
+
+.login-wrapper a {
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
+  margin-bottom: 55px;
 }

@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono');
+
+.cms-nav-container {
+  height: 74px;
+  width: 100vw;
+  position: fixed;
+  border-bottom: 1px solid red;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.3rem;
+}
+
+.cms-nav-container a {
+  text-decoration: none;
+  color: black;
+  margin: 0 15px;
+}
+
+@media (max-width: 480px) {
+  .cms-nav-container {
+    display: none;
+  }
+}

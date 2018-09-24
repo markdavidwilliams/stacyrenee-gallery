@@ -47,7 +47,7 @@ gallery.post('/', upload.single('image'), (req, res) => {
   } else {
     console.log(req.file)
     fs.writeFileSync(process.env.UPLOAD_DIR, req.file.buffer)
-    cloudinary.v2.uploader.upload(process.env.UPLOAD_DIR, (error, result) => {
+    cloudinary.v2.uploader.upload(process.env.UPLOAD_DIR, { public_id: `stacyrenee/${Date.now()}`}, (error, result) => {
       const imgRef = new Ref()
       imgRef.url = result.secure_url
       imgRef

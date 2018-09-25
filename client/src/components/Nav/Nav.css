@@ -34,7 +34,7 @@
 .container:hover {
   border-bottom: 2px solid #fc8f00;
   height: 40px;
-  background-color: #fc8f0020;
+  /* background-color: #fc8f0020; */
   transition: height 0.5s, border-bottom 1.5s, background-color 1.5s;
 }
 

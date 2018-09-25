@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
+import Carousel from './Carousel/Carousel'
+
 import './Gallery.css';
 
 class Gallery extends Component {
@@ -13,7 +15,9 @@ class Gallery extends Component {
       .get(process.env.REACT_APP_DEV_API)
       .then(res => {
         const imgRefs = res.data
-        this.setState({ imgRefs })
+        const indices = imgRefs.length - 1
+        const mounted = true
+        this.setState({ imgRefs, indices, mounted })
       })
       .catch(err => console.log(err))
   }
@@ -25,9 +29,7 @@ class Gallery extends Component {
           <p>loading</p>
         ) : (
           <Fragment>
-            {this.state.imgRefs.map(item => {
-              return <img key={item._id} src={item.url} alt='whooaaa'/>
-            })}
+            <Carousel imgRefs={this.state.imgRefs} />
           </Fragment>
         )}
       </div>

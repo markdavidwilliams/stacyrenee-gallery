@@ -1,0 +1,145 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 5%;
+    opacity: 0.15;
+  }
+}
+
+@keyframes pokeIn {
+  from {
+    width: 10%;
+    opacity: 0.65;
+  }
+  to {
+    width: 5%;
+    opacity: 0.15;
+  }
+}
+
+@keyframes pokeOut {
+  from {
+    width: 5%;
+    opacity: 0.15;
+  }
+  to {
+    width: 10%;
+    opacity: 0.65;
+  }
+}
+
+@keyframes boxShadowFade {
+  from {
+    -webkit-box-shadow: 0 0 0 0 #fff;
+    -moz-box-shadow: 0 0 0 0 #fff;
+    box-shadow: 0 0 0 0 #fff;
+  }
+  to {
+    -webkit-box-shadow: 13px 15px 18px 4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 13px 15px 18px 4px rgba(0, 0, 0, 0.75);
+    box-shadow: 13px 15px 18px 4px rgba(0, 0, 0, 0.75);
+  }
+}
+
+.carousel-wrapper {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
+.active-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeIn;
+  animation-duration: 2s;
+}
+
+.active-image img {
+  -webkit-box-shadow: 20px 15px 18px 4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 20px 15px 18px 4px rgba(0, 0, 0, 0.75);
+  box-shadow: 20px 15px 18px 4px rgba(0, 0, 0, 0.75);
+  transition: box-shadow 1s;
+  animation-name: boxShadowFade;
+  animation-duration: 2.5s;
+}
+
+.active-image:hover img {
+  -webkit-box-shadow: 20px 15px 12px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 20px 15px 12px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 20px 15px 12px -4px rgba(0, 0, 0, 0.75);
+}
+
+.active-card p {
+  margin-top: 25px;
+}
+
+.card {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  width: 5%;
+  overflow: hidden;
+  opacity: 0.15;
+  background-repeat: no-repeat;
+  background-position: left;
+  transition: opacity 1s;
+  animation-name: slideIn;
+  animation-duration: 1.5s;
+}
+
+.card.left {
+  justify-content: flex-end;
+}
+
+.pop-out {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  width: 10%;
+  overflow: hidden;
+  opacity: 0.65;
+  background-repeat: no-repeat;
+  background-position: left;
+  transition: opacity 1s;
+  animation-name: pokeOut;
+  animation-duration: 1.5s;
+}
+
+.pop-in {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  width: 5%;
+  overflow: hidden;
+  opacity: 0.15;
+  background-repeat: no-repeat;
+  background-position: left;
+  transition: opacity 1s;
+  animation-name: pokeIn;
+  animation-duration: 1.5s;
+}
+
+.pop-in.left {
+  justify-content: flex-end;
+}
+
+.pop-out.left {
+  justify-content: flex-end;
+}

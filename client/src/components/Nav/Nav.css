@@ -23,20 +23,19 @@
   width: 100vw;
   padding-top: 5px;
   border-bottom: 1px solid #fc8f0050;
-  opacity: 0.8;
   height: 37px;
   overflow: hidden;
-  transition: opacity 1s, height 1s, border-bottom 1.5s, background-color 1.5s;
+  transition: height 1s, border-bottom 1.5s, background-color 1.5s;
   animation: dropTopC 1000ms;
   z-index: 100;
+  background-color: #fff;
 }
 
 .container:hover {
   border-bottom: 2px solid #fc8f00;
-  opacity: 1;
   height: 40px;
   background-color: #fc8f0020;
-  transition: opacity 0.5s, height 0.5s, border-bottom 1.5s, background-color 1.5s;
+  transition: height 0.5s, border-bottom 1.5s, background-color 1.5s;
 }
 
 .nav-wrapper {
@@ -76,12 +75,12 @@
 }
 
 .nav-wrapper .links .inactive {
-  color: #B5B5B5;
+  color: #000;
   transition: color 0.5s;
 }
 
 .nav-wrapper .links .inactive:hover {
-  color: gray;
+  color: #dd8347;
   transition: color 0.5s;
 }
 

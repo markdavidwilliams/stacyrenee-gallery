@@ -8,7 +8,7 @@ class Login extends Component {
   setToken = event => {
     event.preventDefault()
     localStorage.setItem('token', 'token')
-    window.location.pathname = '/renovate/cms'
+    window.location.pathname = window.location.pathname
   }
 
   render() {

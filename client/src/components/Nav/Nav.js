@@ -12,12 +12,24 @@ class Nav extends Component {
   }
 
   componentDidMount() {
-    const path = this.pathParser();
+    let path = this.pathParser();
     if (!path) {
-      return;
+      return
     } else {
-      const active = path;
-      this.setState({ active })
+      const routes = [
+        'gallery',
+        'videos',
+        'about',
+        'exhibitions',
+        'press'
+      ]
+      const allowed = routes.includes(path)
+      if (allowed) {
+        const active = path
+        this.setState({ active })
+      } else {
+        return
+      }
     }
   }
 

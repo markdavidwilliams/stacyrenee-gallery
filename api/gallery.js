@@ -3,8 +3,10 @@ const mongoose = require('mongoose')
 const multer = require('multer')
 const fs = require('fs')
 const cloudinary = require('cloudinary')
+const os = require('os')
 
-const upload = multer()
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage})
 
 require('dotenv').config()
 
@@ -45,9 +47,11 @@ gallery.post('/', upload.single('image'), (req, res) => {
   if (!req.file) {
     res.send('no file')
   } else {
-    console.log(req.file)
-    fs.writeFileSync(process.env.UPLOAD_DIR, req.file.buffer)
-    cloudinary.v2.uploader.upload(process.env.UPLOAD_DIR, { public_id: `stacyrenee/${Date.now()}`}, (error, result) => {
+    console.log(os.tmpdir())
+    const ext = req.file.originalname.split('.')[1]
+    const tmp = os.tmpdir() + '/deleteme.' + ext
+    fs.writeFileSync(tmp, req.file.buffer)
+    cloudinary.v2.uploader.upload(tmp, { public_id: `stacyrenee/${Date.now()}`}, (error, result) => {
       const imgRef = new Ref()
       imgRef.url = result.secure_url
       imgRef

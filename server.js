@@ -1,12 +1,14 @@
-const express = require('express')
+const server = require('express')()
 
-const routeConfig = require('./config/routes')
 const moduleConfig = require('./config/modules')
+const mongoConfig = require('./config/mongo')
+const cloudinaryConfig = require('./config/cloudinary')
+const routeConfig = require('./config/routes')
 const serveClient = require('./config/serveClient')
 
-const server = express()
-
 moduleConfig(server)
+mongoConfig()
+cloudinaryConfig()
 routeConfig(server)
 serveClient(server)
 

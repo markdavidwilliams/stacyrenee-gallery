@@ -7,7 +7,9 @@ import './Gallery.css';
 
 class Gallery extends Component {
   state = {
-    imgRefs: []
+    imgRefs: [],
+    indices: 0,
+    mounted: false
   }
 
   componentDidMount() {
@@ -25,7 +27,7 @@ class Gallery extends Component {
   render() {
     return (
       <div className="gallery">
-        {this.state.imgRefs === [] ? (
+        {this.state.mounted ? (
           <p>loading</p>
         ) : (
           <Fragment>

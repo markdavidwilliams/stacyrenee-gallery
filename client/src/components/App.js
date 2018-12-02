@@ -9,10 +9,12 @@ import ContentManager from './ContentManager/ContentManager'
 import CmsNav from './ContentManager/CmsNav/CmsNav'
 import CmsGallery from './ContentManager/CmsGallery/CmsGallery'
 
+
 class App extends Component {
   state = {
     routes: null
   }
+
 
   routeKey() {
     return Math.floor(Math.random() * Math.floor(999999))

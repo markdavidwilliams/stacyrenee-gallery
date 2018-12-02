@@ -1,5 +1,5 @@
 const api = require('express').Router()
-const gallery = require('./gallery')
+const gallery = require('./routes/gallery')
 
 api.use('/gallery', gallery)
 

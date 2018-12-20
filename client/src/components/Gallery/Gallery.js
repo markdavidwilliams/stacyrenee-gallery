@@ -27,7 +27,7 @@ class Gallery extends Component {
   render() {
     return (
       <div className="gallery">
-        {this.state.mounted ? (
+        {this.state.imgRefs === [] ? (
           <p>loading</p>
         ) : (
           <Fragment>

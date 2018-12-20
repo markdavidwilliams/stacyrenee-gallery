@@ -12,4 +12,4 @@ cloudinaryConfig()
 routeConfig(server)
 serveClient(server)
 
-module.exports = { server }
+module.exports = server

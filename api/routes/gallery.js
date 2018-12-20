@@ -4,15 +4,15 @@ const fs = require('fs')
 const cloudinary = require('cloudinary')
 const os = require('os')
 
-const ImgRef = require('../../models/ImgRef')
+const Painting = require('../../models/Painting')
 
 const storage = multer.memoryStorage()
 const upload = multer({ storage: storage})
 
 
 gallery.get('/', (req, res) => {
-  ImgRef.find({}, (err, imgRefs) => {
-    res.json(imgRefs)
+  Painting.find({}, (err, paintings) => {
+    res.json(paintings)
   })
 })
 
@@ -25,12 +25,12 @@ gallery.post('/', upload.single('image'), (req, res) => {
     const tmp = os.tmpdir() + '/deleteme.' + ext
     fs.writeFileSync(tmp, req.file.buffer)
     cloudinary.v2.uploader.upload(tmp, { public_id: `stacyrenee/${Date.now()}`}, (error, result) => {
-      const imgRef = new ImgRef()
-      imgRef.url = result.secure_url
-      imgRef
+      const painting = new Painting()
+      painting.url = result.secure_url
+      painting
         .save()
         .then(data => {
-          ImgRef.findById(data, (err, metaRef) => {
+          Painting.findById(data, (err, metaRef) => {
             console.log(metaRef)
             res.json(metaRef)
           })

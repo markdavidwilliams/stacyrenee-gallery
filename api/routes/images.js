@@ -54,3 +54,5 @@ images.post('/', upload.single('image'), (req, res) => {
     })
   }
 })
+
+module.exports = images

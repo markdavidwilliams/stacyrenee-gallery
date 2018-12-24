@@ -8,18 +8,17 @@ import './Gallery.css';
 class Gallery extends Component {
   state = {
     imgRefs: [],
-    indices: 0,
-    mounted: false
   }
 
   componentDidMount() {
     axios
-      .get(process.env.REACT_APP_DEV_API)
+      .get(process.env.REACT_APP_GALLERY_GET)
       .then(res => {
-        const imgRefs = res.data
-        const indices = imgRefs.length - 1
-        const mounted = true
-        this.setState({ imgRefs, indices, mounted })
+        const imgRefs = []
+        res.data.forEach(image => {
+          imgRefs.push(image.url)
+        });
+        this.setState({ imgRefs })
       })
       .catch(err => console.log(err))
   }
@@ -27,7 +26,7 @@ class Gallery extends Component {
   render() {
     return (
       <div className="gallery">
-        {this.state.imgRefs === [] ? (
+        {this.state.imgRefs.length < 3 ? (
           <p>loading</p>
         ) : (
           <Fragment>

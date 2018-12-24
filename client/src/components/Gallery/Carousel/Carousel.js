@@ -6,27 +6,10 @@ class Carousel extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      imgRefs: [],
-      indices: 0,
+      imgRefs: this.props.imgRefs,
+      indices: this.props.imgRefs.length - 1,
       index: 0,
       hover: 'init',
-      ready: null
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
-      const imgRefs = this.props.imgRefs
-      const indices = imgRefs.length -1
-      let ready = null
-      if (imgRefs.length < 3) {
-        ready = false
-      } else {
-        ready = true
-      }
-      this.setState({ imgRefs, indices, ready })
-    } else {
-      return
     }
   }
   
@@ -101,10 +84,6 @@ class Carousel extends Component {
   render() {
     return (
       <div className="carousel-wrapper">
-        {!this.state.ready ? (
-          <Fragment />
-        ) : (
-          <Fragment>
             <div
               className={this.decideClass() + ' left'}
               onClick={this.leftClick}
@@ -126,8 +105,6 @@ class Carousel extends Component {
               onMouseLeave={() => this.toggleHover()}>
               <img src={this.state.imgRefs[this.nextInd()].url} />
             </div>
-          </Fragment>
-        )}
       </div>
     );
   }

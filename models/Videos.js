@@ -8,6 +8,6 @@ const VideosSchema = new Schema({
   added: { type: Date, default: Date.now }
 })
 
-const Videos = mongoose.model('Videos', VideosSchema)
+const Videos = mongoose.model('Video', VideosSchema)
 
 module.exports = Videos

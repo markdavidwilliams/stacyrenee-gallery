@@ -1,6 +1,6 @@
 const api = require('express').Router()
-const gallery = require('./routes/gallery')
+const images = require('./routes/images')
 
-api.use('/gallery', gallery)
+api.use('/images', images)
 
 module.exports = api

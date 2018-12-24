@@ -9,6 +9,12 @@ const Image = require('../../models/Images')
 const storage = multer.memoryStorage()
 const upload = multer({ storage })
 
+images.get('/', (req, res) => {
+  Image.find({}, (err, images) => {
+    res.json(images)
+  })
+})
+
 images.get('/landing', (req, res) => {
   Image.find({ landing: true }, (err, images) => {
     res.json(images)

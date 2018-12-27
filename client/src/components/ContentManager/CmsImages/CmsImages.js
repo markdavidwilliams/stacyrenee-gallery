@@ -8,14 +8,19 @@ class CmsGallery extends Component {
     file: null,
     url: '',
     imgRef: {},
+    year: '',
     err: null
   }
 
-  handleChange = e => {
-    e.preventDefault()
-    console.log(e.target.files)
+  handleTextChange = event => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  handleImageChange = event => {
+    event.preventDefault()
+    console.log(event.target.files)
     const reader = new FileReader()
-    const file = e.target.files[0]
+    const file = event.target.files[0]
     console.log(file)
     reader.onloadend = () => {
       this.setState({ file, url: reader.result })
@@ -27,8 +32,9 @@ class CmsGallery extends Component {
     e.preventDefault()
     const img = new FormData()
     img.append('image', this.state.file, this.state.file.name)
+    img.append('year', `${this.state.year}`)
     axios
-      .post(process.env.REACT_APP_DEV_API, img, {
+      .post(process.env.REACT_APP_IMAGES, img, {
         onUploadProgress: progressEvent => {
           console.log(progressEvent.loaded / progressEvent.total)
         }
@@ -46,7 +52,8 @@ class CmsGallery extends Component {
       <div className="CmsGallery">
         <div>
           <form onSubmit={this.handleSubmit}>
-          <input name="image" type="file" onChange={e => this.handleChange(e)} />
+          <input name="year" onChange={this.handleTextChange} />
+          <input name="image" type="file" onChange={e => this.handleImageChange(e)} />
           <button type="submit" onClick={this.handleSubmit}>Submit</button>
         </form>
         </div>

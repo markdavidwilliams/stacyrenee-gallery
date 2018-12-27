@@ -24,7 +24,8 @@ about.get('/:id', (req, res) => {
 
 about.post('/', (req, res) => {
   const paragraph = new Paragraphs()
-  paragraph = { ...req.body }
+  paragraph.order = Number(req.body.order)
+  paragraph.text = req.body.text
   paragraph
     .save()
     .then((err, paragraph) => {

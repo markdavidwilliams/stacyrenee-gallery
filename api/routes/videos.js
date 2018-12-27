@@ -42,7 +42,7 @@ videos.post('/', (req, res) => {
 })
 
 videos.put('/:id', (req, res) => {
-  Video.findByIdAndUpdate(req.params.id, { ...req.body }, {new: true}, (err, video) => {
+  Video.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true }, (err, video) => {
     if (err) {
       res.json(err)
     } else {

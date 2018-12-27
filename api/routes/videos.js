@@ -13,7 +13,7 @@ videos.get('/', (req, res) => {
 })
 
 videos.get('/:id', (req, res) => {
-  Video.findById(req.body._id, (err, video) => {
+  Video.findById(req.params.id, (err, video) => {
     if (err) {
       res.json(err)
     } else {
@@ -37,7 +37,7 @@ videos.post('/', (req, res) => {
 })
 
 videos.put('/:id', (req, res) => {
-  Video.findByIdAndUpdate(req.body._id, { ...req.body }, {new: true}, (err, video) => {
+  Video.findByIdAndUpdate(req.params.id, { ...req.body }, {new: true}, (err, video) => {
     if (err) {
       res.json(err)
     } else {
@@ -47,7 +47,7 @@ videos.put('/:id', (req, res) => {
 })
 
 videos.delete('/:id', (req, res) => {
-  Video.findByIdAndDelete(req.body._id, (err, video) => {
+  Video.findByIdAndDelete(req.params.id, (err, video) => {
     if (err) {
       res.json(err)
     } else {

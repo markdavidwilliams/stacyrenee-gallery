@@ -13,7 +13,7 @@ about.get('/', (req, res) => {
 })
 
 about.get('/:id', (req, res) => {
-  Paragraphs.findById(req.body._id, (err, paragraph) => {
+  Paragraphs.findById(req.params.id, (err, paragraph) => {
     if (err) {
       res.json(err)
     } else {
@@ -36,8 +36,18 @@ about.post('/', (req, res) => {
     })
 })
 
+about.put('/:id', (req, res) => {
+  Paragraphs.findByIdAndUpdate(req.params.id, { ...req.body }, {new: true}, (err, paragraph) => {
+    if (err) {
+      res.json(err)
+    } else {
+      res.json(paragraph)
+    }
+  })
+})
+
 about.delete('/:id', (req, res) => {
-  Paragraphs.findByIdAndDelete(req.body._id, (err, paragraph) => {
+  Paragraphs.findByIdAndDelete(req.params.id, (err, paragraph) => {
     if (err) {
       res.json(err)
     } else {

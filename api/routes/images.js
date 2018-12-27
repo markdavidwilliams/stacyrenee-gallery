@@ -20,7 +20,7 @@ images.get('/', (req, res) => {
 })
 
 images.get('/:id', (req, res) => {
-  Image.findById(req.body._id), (err, image) => {
+  Image.findById(req.params._id), (err, image) => {
     if (err) {
       res.json(err)
     } else {
@@ -89,7 +89,7 @@ images.post('/', upload.single('image'), (req, res) => {
 })
 
 images.put('/:id', (req, res) => {
-  Image.findByIdAndUpdate(req.body._id, { ...req.body }, { new: true }, (err, image) => {
+  Image.findByIdAndUpdate(req.params._id, { ...req.body }, { new: true }, (err, image) => {
     if (err) {
       res.json(err)
     } else {
@@ -99,7 +99,7 @@ images.put('/:id', (req, res) => {
 })
 
 images.delete('/:id', (req, res) => {
-  Image.findByIdAndDelete(req.body._id, (err, image) => {
+  Image.findByIdAndDelete(req.params._id, (err, image) => {
     if (err) {
       res.json(err)
     } else {

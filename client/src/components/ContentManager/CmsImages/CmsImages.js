@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 
-import './CmsGallery.css'
+import './CmsImages.css'
 
 class CmsGallery extends Component {
   state = {
@@ -60,10 +60,10 @@ class CmsGallery extends Component {
           </Fragment>
           <Fragment>
             {!this.state.imgRef.url ? (
-            <p>no image</p>
-          ): (
-            <img src={this.state.imgRef.url} alt="returned img" />
-          )}
+              <p>no image</p>
+            ): (
+              <img src={this.state.imgRef.url} alt="returned img" />
+            )}
           </Fragment>
         </div>
         {this.state.err ? (
@@ -76,7 +76,7 @@ class CmsGallery extends Component {
           </Fragment>
         )}
       </div>
-    );
+    )
   }
 }
 

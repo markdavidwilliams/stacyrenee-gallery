@@ -7,7 +7,7 @@ import Nav from './Nav/Nav';
 import Gallery from './Gallery/Gallery';
 import ContentManager from './ContentManager/ContentManager'
 import CmsNav from './ContentManager/CmsNav/CmsNav'
-import CmsGallery from './ContentManager/CmsGallery/CmsGallery'
+import CmsImages from './ContentManager/CmsImages/CmsImages'
 
 
 class App extends Component {
@@ -35,7 +35,7 @@ class App extends Component {
         <Route key={this.routeKey()} path='/' component={ CmsNav } />,
         <Route key={this.routeKey()} path = '/gallery' component = { Gallery } />,
         <Route key={this.routeKey()} exact path = '/renovate/cms' component = { ContentManager } />,
-        <Route key={this.routeKey()} path = '/renovate/cms/gallery' component = { CmsGallery } />
+        <Route key={this.routeKey()} path = '/renovate/cms/images' component = { CmsImages } />
       ]
       this.setState({ routes })
     }

@@ -4,7 +4,7 @@ const images = require('./routes/images')
 const videos = require('./routes/videos')
 const about = require('./routes/about')
 const exhibitions = require('./routes/exhibitions')
-const press = require('../models/Press')
+const press = require('./routes/press')
 
 api.use('/images', images)
 api.use('/videos', videos)

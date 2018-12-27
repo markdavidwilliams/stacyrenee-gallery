@@ -1,57 +1,62 @@
 const press = require('express').Router()
 
-const Press = require('../../models/Press')
+const Articles = require('../../models/Articles')
 
 press.get('/', (req, res) => {
-  Press.find({}, (err, press) => {
+  Articles.find({}, (err, articles) => {
     if (err) {
       res.json(err)
     } else {
-      res.json(press)
+      res.json(articles)
     }
   })
 })
 
 press.get('/:id', (req, res) => {
-  Press.findById(req.params.id, (err, press) => {
+  Articles.findById(req.params.id, (err, article) => {
     if (err) {
       res.json(err)
     } else {
-      res.json(press)
+      res.json(article)
     }
   })
 })
 
 press.post('/', (req, res) => {
-  const press = new Press()
-  press = { ...req.body }
-  press
+  const article = new Articles()
+  article.title = req.body.title
+  article.author = req.body.author
+  article.author_title = req.body.author_title
+  article.publication = req.body.publication
+  article.content = [ ...req.body.content ]
+  article.date = req.body.date
+  article
     .save()
-    .then((err, press) => {
+    .then((err, article) => {
       if (err) {
         res.json(err)
       } else {
-        res.json(press)
+        res.json(article)
       }
     })
 })
 
 press.put('/:id', (req, res) => {
-  Press.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true }, (err, press) => {
+  Articles.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true }, (err, article) => {
     if (err) {
       res.json(err)
     } else {
-      res.json(press)
+      res.json(article)
     }
   })
 })
 
 press.delete('/:id', (req, res) => {
-  Press.findByIdAndDelete(req.params.id, (err, press) => {
+  Articles.findByIdAndDelete(req.params.id, (err, article) => {
     if (err) {
       res.json(err)
     } else {
-      res.json(press)
+      res.json(article)
     }
   })
 })

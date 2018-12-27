@@ -24,7 +24,8 @@ exhibitions.get('/:id', (req, res) => {
 
 exhibitions.post('/', (req, res) => {
   const exhibition = new Exhibitions()
-  exhibition = { ...req.body }
+  exhibition.year = Number(req.body.year)
+  exhibition.content = [ ...req.body.content ]
   exhibition
     .save()
     .then((err, exhibition) => {

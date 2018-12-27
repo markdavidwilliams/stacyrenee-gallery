@@ -23,8 +23,13 @@ videos.get('/:id', (req, res) => {
 })
 
 videos.post('/', (req, res) => {
-  const video = new Video()
-  video = { ...req.body }
+  let video = new Video()
+  console.log("VIDEO BEFORE: ", video)
+  console.log("REQ.BODY: ", req.body)
+  video.title = req.body.title
+  video.url = req.body.url
+  video.video_date = req.body.video_date
+  console.log("VIDEO AFTER: ", video)
   video
     .save()
     .then((err, video) => {

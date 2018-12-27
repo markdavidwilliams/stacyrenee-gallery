@@ -11,25 +11,51 @@ const upload = multer({ storage })
 
 images.get('/', (req, res) => {
   Image.find({}, (err, images) => {
-    res.json(images)
+    if (err) {
+      res.json(err)
+    } else {
+      res.json(images)
+    }
   })
+})
+
+images.get('/:id', (req, res) => {
+  Image.findById(req.body._id), (err, image) => {
+    if (err) {
+      res.json(err)
+    } else {
+      res.json(image)
+    }
+  }
 })
 
 images.get('/landing', (req, res) => {
   Image.find({ landing: true }, (err, images) => {
-    res.json(images)
+    if (err) {
+      res.json(err)
+    } else {
+      res.json(images)
+    }
   })
 })
 
 images.get('/gallery', (req, res) => {
   Image.find({ gallery: true }, (err, images) => {
-    res.json(images)
+    if (err) {
+      res.json(err)
+    } else {
+      res.json(images)
+    }
   })
 })
 
 images.get('/about', (req, res) => {
   Image.find({ about: true }, (err, images) => {
-    res.json(images)
+    if (err) {
+      res.json(err)
+    } else {
+      res.json(images)
+    }
   })
 })
 
@@ -51,14 +77,35 @@ images.post('/', upload.single('image'), (req, res) => {
       image.about = req.body.about === 'true' ? true : false
       image
         .save()
-        .then(data => {
-          Image.findById(data, (err, metaRef) => {
-            console.log(metaRef)
-            res.json(metaRef)
-          })
+        .then((err, image) => {
+          if (err) {
+            res.json(err)
+          } else {
+            res.json(image)
+          }
         })
     })
   }
+})
+
+images.put('/:id', (req, res) => {
+  Image.findByIdAndUpdate(req.body._id, { ...req.body }, { new: true }, (err, image) => {
+    if (err) {
+      res.json(err)
+    } else {
+      res.json(image)
+    }
+  })
+})
+
+images.delete('/:id', (req, res) => {
+  Image.findByIdAndDelete(req.body._id, (err, image) => {
+    if (err) {
+      res.json(err)
+    } else {
+      res.json(image)
+    }
+  })
 })
 
 module.exports = images

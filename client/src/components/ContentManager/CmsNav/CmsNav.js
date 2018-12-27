@@ -13,8 +13,8 @@ class CmsNav extends Component {
   render() {
     return (
       <div className='cms-nav-container'>
-        <Link to='/renovate/cms/gallery'>
-          <p>gallery</p>
+        <Link to='/renovate/cms/images'>
+          <p>images</p>
         </Link>
         <Link to='/'>
           <p onClick={this.logout}>logout</p>

@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 
+import Uploader from './Uploader/Uploader'
+
 import './CmsImages.css'
 
 class CmsGallery extends Component {
@@ -49,40 +51,7 @@ class CmsGallery extends Component {
 
   render() {
     return (
-      <div className="CmsGallery">
-        <div>
-          <form onSubmit={this.handleSubmit}>
-          <input name="year" onChange={this.handleTextChange} />
-          <input name="image" type="file" onChange={e => this.handleImageChange(e)} />
-          <button type="submit" onClick={this.handleSubmit}>Submit</button>
-        </form>
-        </div>
-        <div>
-          <Fragment>
-            {!this.state.url ? (
-              <p>none selected</p>
-            ) : (
-              <img src={this.state.url} alt="selected img" />
-            )}
-          </Fragment>
-          <Fragment>
-            {!this.state.imgRef.url ? (
-              <p>no image</p>
-            ): (
-              <img src={this.state.imgRef.url} alt="returned img" />
-            )}
-          </Fragment>
-        </div>
-        {this.state.err ? (
-          <Fragment>
-            {this.state.err.message}
-          </Fragment>
-        ) : (
-          <Fragment>
-            <p>All Good</p>
-          </Fragment>
-        )}
-      </div>
+      <Uploader />
     )
   }
 }

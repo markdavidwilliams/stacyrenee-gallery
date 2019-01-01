@@ -23,7 +23,7 @@ class Gallery extends Component {
   render() {
     return (
       <div className="gallery">
-        {!this.state.images.length < 3 ? (
+        {this.state.images.length < 3 ? (
           <p>loading</p>
         ) : (
           <Fragment>

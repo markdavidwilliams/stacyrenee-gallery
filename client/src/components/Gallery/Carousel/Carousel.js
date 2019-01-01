@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 
 import './Carousel.css'
 
@@ -94,7 +94,7 @@ class Carousel extends Component {
               <div className="active-image">
                <img src={this.props.images[this.state.index].url} />
               </div>
-              <p>{this.props.images[this.state.index]._id}</p>
+              <p>{this.props.images[this.state.index].title}</p>
             </div>
             <div
               className={this.decideClass()}

@@ -6,8 +6,7 @@ class Carousel extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      imgRefs: this.props.imgRefs,
-      indices: this.props.imgRefs.length - 1,
+      indices: this.props.images.length - 1,
       index: 0,
       hover: 'init',
     }
@@ -89,21 +88,20 @@ class Carousel extends Component {
               onClick={this.leftClick}
               onMouseEnter={() => this.toggleHover()}
               onMouseLeave={() => this.toggleHover()}>
-              <img src={this.state.imgRefs[this.prevInd()].url} />
+              <img src={this.props.images[this.prevInd()].url} />
             </div>
             <div className="active-card">
-              {/* <h3>{this.state.imgRefs[this.state.index].title}</h3> */}
               <div className="active-image">
-               <img src={this.state.imgRefs[this.state.index].url} />
+               <img src={this.props.images[this.state.index].url} />
               </div>
-              <p>{this.state.imgRefs[this.state.index]._id}</p>
+              <p>{this.props.images[this.state.index]._id}</p>
             </div>
             <div
               className={this.decideClass()}
               onClick={this.rightClick}
               onMouseEnter={() => this.toggleHover()}
               onMouseLeave={() => this.toggleHover()}>
-              <img src={this.state.imgRefs[this.nextInd()].url} />
+              <img src={this.props.images[this.nextInd()].url} />
             </div>
       </div>
     );

@@ -7,18 +7,15 @@ import './Gallery.css';
 
 class Gallery extends Component {
   state = {
-    imgRefs: [],
+    images: []
   }
 
   componentDidMount() {
     axios
-      .get(process.env.REACT_APP_GALLERY_GET)
+      .get(process.env.REACT_APP_GALLERY)
       .then(res => {
-        const imgRefs = []
-        res.data.forEach(image => {
-          imgRefs.push(image.url)
-        });
-        this.setState({ imgRefs })
+        const images = res.data
+        this.setState({ images })
       })
       .catch(err => console.log(err))
   }
@@ -26,11 +23,11 @@ class Gallery extends Component {
   render() {
     return (
       <div className="gallery">
-        {this.state.imgRefs.length < 3 ? (
+        {!this.state.images.length < 3 ? (
           <p>loading</p>
         ) : (
           <Fragment>
-            <Carousel imgRefs={this.state.imgRefs} />
+            <Carousel images={this.state.images} />
           </Fragment>
         )}
       </div>

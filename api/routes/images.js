@@ -1,4 +1,4 @@
-const images = require('express').Router()
+const imagesRouter = require('express').Router()
 const multer = require('multer')
 const fs = require('fs')
 const cloudinary = require('cloudinary')
@@ -9,7 +9,7 @@ const Image = require('../../models/Images')
 const storage = multer.memoryStorage()
 const upload = multer({ storage })
 
-images.get('/', (req, res) => {
+imagesRouter.get('/', (req, res) => {
   Image.find({}, (err, img) => {
     if (err) {
       res.json(err)
@@ -19,7 +19,7 @@ images.get('/', (req, res) => {
   })
 })
 
-images.get('/:id', (req, res) => {
+imagesRouter.get('/:id', (req, res) => {
   Image.findById(req.params.id, (err, img) => {
     if (err) {
       res.json(err)
@@ -29,37 +29,7 @@ images.get('/:id', (req, res) => {
   })
 })
 
-images.get('/landing', (req, res) => {
-  Image.find({ landing: true }, (err, img) => {
-    if (err) {
-      res.json(err)
-    } else {
-      res.json(img)
-    }
-  })
-})
-
-images.get('/gallery', (req, res) => {
-  Image.find({ gallery: true }, (err, img) => {
-    if (err) {
-      res.json(err)
-    } else {
-      res.json(img)
-    }
-  })
-})
-
-images.get('/about', (req, res) => {
-  Image.find({ about: true }, (err, img) => {
-    if (err) {
-      res.json(err)
-    } else {
-      res.json(img)
-    }
-  })
-})
-
-images.post('/', upload.single('image'), (req, res) => {
+imagesRouter.post('/', upload.single('image'), (req, res) => {
   if (!req.file) {
     res.send('no file')
   } else {
@@ -88,7 +58,7 @@ images.post('/', upload.single('image'), (req, res) => {
   }
 })
 
-images.put('/:id', (req, res) => {
+imagesRouter.put('/:id', (req, res) => {
   Image.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true }, (err, img) => {
     if (err) {
       res.json(err)
@@ -98,7 +68,7 @@ images.put('/:id', (req, res) => {
   })
 })
 
-images.delete('/:id', (req, res) => {
+imagesRouter.delete('/:id', (req, res) => {
   Image.findByIdAndDelete(req.params.id, (err, img) => {
     if (err) {
       res.json(err)
@@ -108,4 +78,4 @@ images.delete('/:id', (req, res) => {
   })
 })
 
-module.exports = images
+module.exports = imagesRouter
